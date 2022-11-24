@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oliver.simplemall.DAO.UserDAO">
+    <select id="selectByCondition" parameterType="com.oliver.simplemall.entity.UserDO" resultType="com.oliver.simplemall.entity.UserDO">
+        SELECT * FROM user
+        <if test="username != null">
+            WHERE username = #{username}
+        </if>
+    </select>
+
+    <select id="selectByUsername" parameterType="String" resultType="com.oliver.simplemall.entity.UserDO">
+        select * from user where username = #{username}
+    </select>
+    <insert id="insert" parameterType="com.oliver.simplemall.entity.UserDO">
+        INSERT INTO user VALUES (#{userId}, #{username}, #{password}, #{email}, #{gender}, #{phoneNumber}, #{userAuthority})
+    </insert>
+
+</mapper>

@@ -1,10 +1,14 @@
 package com.oliver.simplemall.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
 @Data
-public class UserDo {
-    private String id;
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+public class UserDO {
+    private String userId;
 
     private String username;
 

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oliver.simplemall.DAO.ItemDAO">
+    <select id="selectByCondition" parameterType="com.oliver.simplemall.entity.ItemDO" resultType="com.oliver.simplemall.entity.ItemDO">
+        select * from items
+        where 1 = 1
+        <if test="itemId != null">
+            and item_id = #{itemId}
+        </if>
+        <if test="managerId != null">
+            and manager_id = #{managerId}
+        </if>
+        <if test="categoryId != null">
+            and category_id = #{categoryId}
+        </if>
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from items
+        where  item_id = #{itemId,jdbcType=VARCHAR} 
+    </delete>
+    <insert id="insert" keyColumn="item_id" keyProperty="itemId" parameterType="com.oliver.simplemall.entity.ItemDO" useGeneratedKeys="true">
+        insert into items
+        ( item_id,manager_id,item_price
+        ,item_detail,category_id)
+        values (#{itemId,jdbcType=VARCHAR},#{managerId,jdbcType=VARCHAR},#{itemPrice,jdbcType=DECIMAL}
+        ,#{itemDetail,jdbcType=VARCHAR},#{categoryId,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="item_id" keyProperty="itemId" parameterType="com.oliver.simplemall.entity.ItemDO" useGeneratedKeys="true">
+        insert into items
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="itemId != null">item_id,</if>
+                <if test="managerId != null">manager_id,</if>
+                <if test="itemPrice != null">item_price,</if>
+                <if test="itemDetail != null">item_detail,</if>
+                <if test="categoryId != null">category_id,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="itemId != null">#{itemId,jdbcType=VARCHAR},</if>
+                <if test="managerId != null">#{managerId,jdbcType=VARCHAR},</if>
+                <if test="itemPrice != null">#{itemPrice,jdbcType=DECIMAL},</if>
+                <if test="itemDetail != null">#{itemDetail,jdbcType=VARCHAR},</if>
+                <if test="categoryId != null">#{categoryId,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.oliver.simplemall.entity.ItemDO">
+        update items
+        <set>
+                <if test="managerId != null">
+                    manager_id = #{managerId,jdbcType=VARCHAR},
+                </if>
+                <if test="itemPrice != null">
+                    item_price = #{itemPrice,jdbcType=DECIMAL},
+                </if>
+                <if test="itemDetail != null">
+                    item_detail = #{itemDetail,jdbcType=VARCHAR},
+                </if>
+                <if test="categoryId != null">
+                    category_id = #{categoryId,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   item_id = #{itemId,jdbcType=VARCHAR} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.oliver.simplemall.entity.ItemDO">
+        update items
+        set 
+            manager_id =  #{managerId,jdbcType=VARCHAR},
+            item_price =  #{itemPrice,jdbcType=DECIMAL},
+            item_detail =  #{itemDetail,jdbcType=VARCHAR},
+            category_id =  #{categoryId,jdbcType=VARCHAR}
+        where   item_id = #{itemId,jdbcType=VARCHAR} 
+    </update>
+</mapper>

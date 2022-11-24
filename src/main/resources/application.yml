@@ -1,5 +1,10 @@
 # spring boot 配置文件
 spring:
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+
   # jdbc驱动
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -13,5 +18,12 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.oliver.simpleMall.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
 server:
   port: 8080
+
+
+
+
