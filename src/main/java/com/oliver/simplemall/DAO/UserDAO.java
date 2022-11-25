@@ -12,4 +12,7 @@ public interface UserDAO {
     UserDO selectByUsername(String username);
 
     UserDO selectByCondition(UserDO userDo);
+
+    int update(UserDO user);
+
 }

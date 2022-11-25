@@ -18,10 +18,10 @@ public class ItemServiceImpl implements ItemService {
     @Autowired
     ItemDAO itemDAO;
 
-//    @Override
-//    public List<ItemDO> getItems(ItemDTO itemDTO) {
-//        return itemDAO.selectByCondition(itemDTO);
-//    }
+    @Override
+    public List<ItemDO> getItems(ItemDO itemDO) {
+        return itemDAO.selectByCondition(itemDO);
+    }
 
     @Override
     public int addItem(ItemDO itemDO) {

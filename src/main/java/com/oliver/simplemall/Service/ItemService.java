@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface ItemService {
-//
-//    List<ItemDO> getItems(ItemDTO item);
+
+    List<ItemDO> getItems(ItemDO item);
 
     int addItem(ItemDO item);
 

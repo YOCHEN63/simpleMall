@@ -9,6 +9,11 @@ public class ItemDTO {
     /**
      *
      */
+    private String managerId;
+
+    /**
+     *
+     */
     private Long itemPrice;
 
     /**
@@ -20,4 +25,9 @@ public class ItemDTO {
      *
      */
     private String categoryId;
+
+    /**
+     *
+     */
+    private String token;
 }

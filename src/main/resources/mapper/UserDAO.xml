@@ -5,8 +5,24 @@
 <mapper namespace="com.oliver.simplemall.DAO.UserDAO">
     <select id="selectByCondition" parameterType="com.oliver.simplemall.entity.UserDO" resultType="com.oliver.simplemall.entity.UserDO">
         SELECT * FROM user
+        WHERE TRUE
         <if test="username != null">
-            WHERE username = #{username}
+            AND username = #{username}
+        </if>
+        <if test="userId != null">
+            AND user_id = #{userId}
+        </if>
+        <if test="email != null">
+            AND email = #{email}
+        </if>
+        <if test="gender != null">
+            AND gender = #{gender}
+        </if>
+        <if test="phoneNumber != null">
+            AND phone_number = #{phoneNumber}
+        </if>
+        <if test="userAuthority != null">
+            AND user_authority = #{userAuthor}
         </if>
     </select>
 
@@ -14,7 +30,36 @@
         select * from user where username = #{username}
     </select>
     <insert id="insert" parameterType="com.oliver.simplemall.entity.UserDO">
-        INSERT INTO user VALUES (#{userId}, #{username}, #{password}, #{email}, #{gender}, #{phoneNumber}, #{userAuthority})
+        INSERT INTO user  (user_id, username, password, email, gender, phone_number, user_authority) VALUES (#{userId}, #{username}, #{password}, #{email}, #{gender}, #{phoneNumber}, #{userAuthority})
     </insert>
+    <update id="update">
+        update user
+        <set>
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="email != null">
+                email = #{email},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="phoneNumber != null">
+                phone_number = #{phoneNumber},
+            </if>
+            <if test="userAuthority != 0">
+                user_authority = #{userAuthority},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="token != null">
+                token = #{token},
+            </if>
+        </set>
+    </update>
 
 </mapper>

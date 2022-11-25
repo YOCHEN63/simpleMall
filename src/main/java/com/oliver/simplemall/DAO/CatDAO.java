@@ -11,5 +11,7 @@ import java.util.List;
 public interface CatDAO {
 
 
+    List<CategoryDO> selectByCondition(CategoryDO category);
+
     int addCategory(CategoryDO category);
 }

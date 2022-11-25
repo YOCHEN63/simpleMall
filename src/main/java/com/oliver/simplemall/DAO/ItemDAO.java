@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface ItemDAO {
 
-    List<ItemDO> selectByCondition(ItemDTO condition);
+    List<ItemDO> selectByCondition(ItemDO condition);
     int deleteByPrimaryKey(Long id);
 
     int insert(ItemDO record);

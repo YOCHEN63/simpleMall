@@ -10,4 +10,7 @@ public interface UserService {
     int registerUser(UserDTO user);
 
     UserDO loginUser(UserLoginDTO user);
+
+    Boolean checkToken(String username, String token);
+
 }

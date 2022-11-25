@@ -6,6 +6,7 @@ import com.oliver.simplemall.entity.CategoryDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -18,5 +19,10 @@ public class CatServiceImpl implements CatService {
     public int addCategory(CategoryDO category) {
         category.setCatId(UUID.randomUUID().toString());
         return catDAO.addCategory(category);
+    }
+
+    @Override
+    public List<CategoryDO> getCategories(CategoryDO category) {
+        return catDAO.selectByCondition(category);
     }
 }

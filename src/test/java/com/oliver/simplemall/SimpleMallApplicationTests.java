@@ -56,12 +56,12 @@ class SimpleMallApplicationTests {
     @Autowired
     ItemService itemService;
 
-//    @Test
-//    void getItems() {
-//        ItemDTO itemDTO = new ItemDTO();
-//        List<ItemDO> list = itemService.getItems(itemDTO);
-//        System.out.println(list.toString());
-//    }
+    @Test
+    void getItems() {
+        ItemDO item = new ItemDO();
+        List<ItemDO> list = itemService.getItems(item);
+        System.out.println(list.toString());
+    }
 
     @Test
     void addItem() {
